@@ -201,29 +201,7 @@ const MultiApplianceView = ({
     
     {/* Column 1 & 2: Appliance List and Add Form */}
     <div className="lg:col-span-2">
-      <h2 className={`text-xl font-bold mb-4 flex justify-between items-center ${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-        Your Appliances ({appliances.length})
-      </h2>
-      
-      {/* List of Appliances - Now showing calculated individual metrics */}
-      <div className={`h-72 overflow-y-auto pr-2 mb-6 border p-2 rounded-xl ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-gray-50'}`}>
-        {calculatedAppliances.length === 0 ? (
-          <div className={`text-center py-12 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
-            No appliances added yet. Use the form below!
-          </div>
-        ) : (
-          calculatedAppliances.map(appliance => (
-            <ApplianceRow 
-              key={appliance.id} 
-              appliance={appliance} 
-              handleDeleteAppliance={handleDeleteAppliance} 
-              isDarkMode={isDarkMode}
-            />
-          ))
-        )}
-      </div>
-
-      {/* Add New Appliance Form */}
+            {/* Add New Appliance Form */}
       <h3 className={`text-lg font-bold mb-3 ${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>Add New Appliance</h3>
       <form onSubmit={handleAddAppliance} className={`p-4 rounded-xl shadow-md space-y-3 ${isDarkMode ? 'bg-gray-900/50' : 'bg-indigo-50'}`}>
         <input
@@ -264,6 +242,30 @@ const MultiApplianceView = ({
           <span>Add Appliance</span>
         </button>
       </form>
+      
+      <h2 className={`text-xl font-bold mb-4 flex justify-between items-center ${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+        Your Appliances ({appliances.length})
+      </h2>
+      
+      {/* List of Appliances - Now showing calculated individual metrics */}
+      <div className={`h-72 overflow-y-auto pr-2 mb-6 border p-2 rounded-xl ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-gray-50'}`}>
+        {calculatedAppliances.length === 0 ? (
+          <div className={`text-center py-12 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+            No appliances added yet. Use the form below!
+          </div>
+        ) : (
+          calculatedAppliances.map(appliance => (
+            <ApplianceRow 
+              key={appliance.id} 
+              appliance={appliance} 
+              handleDeleteAppliance={handleDeleteAppliance} 
+              isDarkMode={isDarkMode}
+            />
+          ))
+        )}
+      </div>
+
+  
     </div>
     
     {/* Column 3: Summary Results */}
